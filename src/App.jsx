@@ -1,21 +1,38 @@
-import Header from "./components/Header.jsx";
-import Content from "./components/Content.jsx";
-import Total from "./components/Total.jsx";
+import { useState } from "react"
 
 const App = () => {
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const [firstname, setfirstname] = useState(" ")
+  const [lasname, setlasname] = useState(" ")
 
+
+  function firstnameupdate(e) {
+    setfirstname(e.target.value)
+  }
+
+  function lastnameupdate(e) {
+    setlasname(e.target.value)
+  }
+
+
+  let fullname = firstname + " " + lasname
   return (
     <>
-    <Header course={course}/>
-    <Content part1={part1}  exercises1 ={exercises1} part2={part2} exercises2= {exercises2} part3={part3} exercises3={exercises3} />
-    <Total exercises1 ={exercises1} exercises2={exercises2} exercises3={exercises3}/>
+      <h1> All About name</h1>
+      <label>
+        First Name: {' '}
+        <input 
+        value={firstname}
+        onChange={firstnameupdate}
+         />
+      </label>
+      <label>
+        Last Name: {' '}
+        <input 
+        value={lasname}
+        onChange={lastnameupdate}
+         />
+      </label>
+      <p>your fullname is : {fullname}</p>
     </>
   )
 }
